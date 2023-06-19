@@ -1,41 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiKurs.MainPage">
+             x:Class="MauiKurs.Xaml_Grundlagen"           
+             Title="Mein Fenster">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <StackLayout Margin="10">
+        <!--<StackLayout.Children>-->
+            <Label Text="Username:"
+               HorizontalOptions="End"
+               VerticalOptions="EndAndExpand"
+               x:Name="Lbl_Beispiel" 
+               Margin="40, 20, 10, 5"
+               FontSize="30"
+               FontAttributes="Bold"/>
+            <Entry Placeholder="z.B. Max Mustermann"
+               VerticalOptions="StartAndExpand"/>
+            <Button Text="Klick Mich"
+                x:Name="Btn_KlickMich"
+                Clicked="Btn_KlickMich_Clicked"/>
+            <Label>
+                <Label.Text>
+                    Hallo Welt
+                </Label.Text>
+                <Label.BackgroundColor>
+                    <Color>#A2B3C4</Color>
+                </Label.BackgroundColor>
+            </Label>
+        <!--</StackLayout.Children>-->
+    </StackLayout>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="MOIN MOIN"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
 
 </ContentPage>

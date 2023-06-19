@@ -1,24 +1,25 @@
 ﻿namespace MauiKurs;
 
-public partial class MainPage : ContentPage
+public partial class Xaml_Grundlagen : ContentPage
 {
-	int count = 0;
-
-	public MainPage()
+	public Xaml_Grundlagen()
 	{
 		InitializeComponent();
+
+		Lbl_Beispiel.Text = "Passwort:";
+
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count+=10;
+    private async void Btn_KlickMich_Clicked(object sender, EventArgs e)
+    {
+		bool result = await DisplayAlert("FRAGE", "Soll was passieren?", "Ja", "Nein");
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+		if (result)
+		{
+			Lbl_Beispiel.BackgroundColor = Colors.Green;
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+			(sender as Button).Text = "Wurde geklickt";
+		}
+    }
 }
 
