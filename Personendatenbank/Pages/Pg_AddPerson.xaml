@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Personendatenbank.Pages.Pg_AddPerson"
+             Title="Neue Person">
+    
+    <!--#region Lab 03-->
+    <StackLayout Orientation="Vertical">
+        <Label
+            x:Name="Lbl_Output"
+            Text="Hello MAUI"
+            TextColor="Red"
+            VerticalOptions="CenterAndExpand" 
+            HorizontalOptions="Center"
+            FontAttributes="Bold"
+            FontSize="25"/>
+
+        <Button x:Name="Btn_ClickMe"
+                Text="Change Color"
+                Clicked="Btn_ClickMe_Clicked"/>
+    </StackLayout>
+    <!--#endregion-->
+    
+</ContentPage>

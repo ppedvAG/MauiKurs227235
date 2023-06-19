@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Im Root-Element werden die in diesem Dokument benutzten Namespaces definiert, sowie der Verweis auf die anhängige Klasse (CodeBehind)-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKurs.Xaml_Grundlagen"           
+             Title="XAML-Grundlagen">
+    <!--In MAUI darf jede Page einen Haupt-Layoutcontainer enthalten, in welchem alle
+        weiteren Container und Controls beinhaltet sind (vgl. Content-Property)-->
+    <!--Container, welche die Children-Property besitzen können mehrere Elemente beinhalten-->
+    <StackLayout>
+        <!--<StackLayout.Children>-->
+        
+        <!--Properties können bei einfacher Belegung direkt im Einleitungstag zugewiesen werden.
+            x:Name gibt hierbei die Variablenbezeichnung für das Objekt an, über welche es im CodeBehind angesprochen werden kann. -->
+        <!--Vertical und HorizontalObptions definieren das Anzeige-Verhalten des UI-Elements in Bezug auf umgebende Objekte.-->
+        <!--Margin definiert einen Abstand des UI-Elements zu umgebenden Elementen.-->
+        <Button x:Name="Btn_KlickMich"
+                    Text="Klick Mich"
+                    Clicked="Btn_KlickMich_Clicked"
+                    Margin="10, 20, 30, 40"
+                    FontSize="Small"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Center"/>
+
+        <Label x:Name="Lbl_Output">
+            <!--Wenn eine Property mit komplexen Objekten befüllt werden sollen, muss diese Property ausgelagert werden.-->
+            <Label.Text>
+                Hallo Welt
+            </Label.Text>
+            <Label.TextColor>
+                <Color>#A2B4C6</Color>
+            </Label.TextColor>
+        </Label>
+
+        <!--Viele UI-Elemente hat eien Standart-Property, auf die direkt zugegriffen werden kann (meißt Text, Children, Content)-->
+        <Label>Hallo Welt</Label>
+        
+        <!--</StackLayout.Children>-->
+    </StackLayout>
+
+
+</ContentPage>

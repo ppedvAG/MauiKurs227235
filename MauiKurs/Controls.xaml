@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKurs.Controls"
+             Title="Controls">
+    <VerticalStackLayout>
+        
+        <Label x:Name="Lbl_Output" Text="Beispiel"/>
+        <ImageButton Source="add.png" 
+                     Clicked="ImageButton_Clicked"
+                     WidthRequest="100"
+                     HeightRequest="200"
+                     Aspect="AspectFit"/>
+
+        <Entry Keyboard="Email"
+               Placeholder="Name"
+               Text="HALLO"
+               IsPassword="False"
+               Completed="Entry_Completed"/>
+
+        <HorizontalStackLayout>
+            <Stepper Minimum="0"
+                     Maximum="100"
+                     Increment="1"
+                     ValueChanged="Stepper_ValueChanged"/>
+            <Label x:Name="Lbl_Stepper"/>
+        </HorizontalStackLayout>
+
+        <DatePicker Format="dd-MM-yyyy"
+                    Date="11-12-2003"/>
+
+        <Picker Title="Monkeys"
+	            x:Name="Pkr_Affen">
+            <Picker.Items>
+                <x:String>Baboon</x:String>
+                <x:String>Capuchin Monkey</x:String>
+                <x:String>Blue Monkey</x:String>
+                <x:String>Squirrel Monkey</x:String>
+            </Picker.Items>
+        </Picker>
+
+
+    </VerticalStackLayout>
+</ContentPage>
