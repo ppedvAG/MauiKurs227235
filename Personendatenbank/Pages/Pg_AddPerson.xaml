@@ -5,7 +5,7 @@
              Title="Neue Person">
     
     <!--#region Lab 03-->
-    <StackLayout Orientation="Vertical">
+    <!--<StackLayout Orientation="Vertical">
         <Label
             x:Name="Lbl_Output"
             Text="Hello MAUI"
@@ -18,7 +18,54 @@
         <Button x:Name="Btn_ClickMe"
                 Text="Change Color"
                 Clicked="Btn_ClickMe_Clicked"/>
-    </StackLayout>
+    </StackLayout>-->
     <!--#endregion-->
-    
+
+    <!--#region Lab 04-->
+    <VerticalStackLayout Padding="10"
+                 Spacing="15">
+
+        <Label x:Name="Header"
+               Text="Gib die Daten der neuen Person ein und bestätige."
+               HorizontalOptions="Center"
+               FontSize="Body"
+               TextColor="Black"/>
+
+        <Label Text="Name:"/>
+        <Entry x:Name="Ety_Name" 
+               Placeholder="z.B. Max Mustermann"
+               HorizontalOptions="Fill"
+               Keyboard="Text"
+               Completed="Ety_Name_Completed"/>
+
+        <Label Text="Geburtsdatum:"/>
+        <DatePicker x:Name="Dpr_Birthdate" 
+                    Format="dd.MM.yyyy"
+                    HorizontalOptions="Fill"
+                    MinimumDate="01.01.1900"
+                    DateSelected="Dpr_Birthdate_DateSelected"/>
+
+        <Label Text="Geschlecht:"/>
+        <Picker x:Name="Pkr_Gender" 
+                Title="Wähle Geschlecht aus"
+                HorizontalOptions="Fill">
+            <Picker.Items>
+                <x:String>Männlich</x:String>
+                <x:String>Weiblich</x:String>
+                <x:String>Divers</x:String>
+            </Picker.Items>
+        </Picker>
+
+
+        <Label Text="Verheiratet"/>
+        <Switch x:Name="Swt_Married"
+                HorizontalOptions="End"/>
+
+        <Button x:Name="Btn_Add"
+                Text="Hinzufügen/Ändern"
+                Clicked="Btn_Add_Clicked"
+                HorizontalOptions="Fill"/>
+    </VerticalStackLayout>
+    <!--#endregion-->
+
 </ContentPage>

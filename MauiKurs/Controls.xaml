@@ -1,44 +1,118 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiKurs.Controls"
              Title="Controls">
-    <VerticalStackLayout>
-        
-        <Label x:Name="Lbl_Output" Text="Beispiel"/>
-        <ImageButton Source="add.png" 
+    <!--Ein ScrollView ermöglicht dem User das Scrollen des Inhalts-->
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--Border ist ein grafisches Element zu Umrandung anderer Inhalte-->
+            <Border StrokeThickness="4"
+                    Padding="15,15">
+                <Border.Stroke>
+                    <!--Border.Stroke definiert die Rahmenfarbe und benötigt ein Brush-Objekt-->
+                    <SolidColorBrush Color="Red"/>
+                </Border.Stroke>
+                <!--Labels sind UI-Elemente zur Ausgabe von Strings-->
+                <Label  Text="Username:"
+                        HorizontalOptions="Center"
+                        FontSize="Large"
+                        x:Name="Lbl_Output"/>
+            </Border>
+
+            <!--Buttons-->
+            <!--In XAML definierte Events benötigen einen EventHandler im CodeBehind (vgl. CodeBehind)-->
+            <Button Text="Hallo" Clicked="Button_Clicked" BorderWidth="2" BorderColor="Red"/>
+            <!--Grafische Ressourcen müssen in den gemeinsamen Ressourcen liegen und in der *.csproj angemeldet werden-->
+            <ImageButton Source="add.png" 
                      Clicked="ImageButton_Clicked"
                      WidthRequest="100"
                      HeightRequest="200"
                      Aspect="AspectFit"/>
 
-        <Entry Keyboard="Email"
+            <!--Texteingaben-->
+            <!--Die Placeholder-Property des Entries wird im Textfeld angezeigt, solange der Benutzer noch keinen Eintrag getätigt hat-->
+            <!--Die Keyboard-Property definiert das angezeigte Eingabefeld-->
+            <Entry Keyboard="Email"
                Placeholder="Name"
                Text="HALLO"
                IsPassword="False"
                Completed="Entry_Completed"/>
+            <Editor Placeholder="Multiline"/>
+            <SearchBar Placeholder="Search"
+                       SearchButtonPressed="ImageButton_Clicked"/>
 
-        <HorizontalStackLayout>
-            <Stepper Minimum="0"
+            <!--Boolsche Controls-->
+            <CheckBox IsChecked="True" />
+            <Switch IsToggled="True"/>
+
+            <!--Numerische Controls-->
+            <Slider Minimum="0"
+                Maximum="100"
+                Value="50"/>
+            <HorizontalStackLayout>
+                <Stepper Minimum="0"
                      Maximum="100"
                      Increment="1"
                      ValueChanged="Stepper_ValueChanged"/>
-            <Label x:Name="Lbl_Stepper"/>
-        </HorizontalStackLayout>
+                <Label x:Name="Lbl_Stepper"/>
+            </HorizontalStackLayout>
 
-        <DatePicker Format="dd-MM-yyyy"
-                    Date="11-12-2003"/>
+            <!--Prozess-Visualisierung-->
+            <ProgressBar Progress="0.5"/>
+            <ActivityIndicator IsRunning="True"/>
 
-        <Picker Title="Monkeys"
+            <!--Spezialiserte Auswahl-Controls-->
+            <DatePicker MinimumDate="1-1-1900"
+                        MaximumDate="12-31-2100"
+                        Format="dd-MM-yyyy"
+                        Date="11-12-2003"/>
+            <TimePicker Time="16:15:26"
+                        Format="HH:mm:ss"/>
+
+            <!--Item-Controls-->
+            <!--Picker ist eine Alternative zur ComboBox-->
+            <Picker Title="Monkeys"
 	            x:Name="Pkr_Affen">
-            <Picker.Items>
-                <x:String>Baboon</x:String>
-                <x:String>Capuchin Monkey</x:String>
-                <x:String>Blue Monkey</x:String>
-                <x:String>Squirrel Monkey</x:String>
-            </Picker.Items>
-        </Picker>
+                <Picker.Items>
+                    <x:String>Baboon</x:String>
+                    <x:String>Capuchin Monkey</x:String>
+                    <x:String>Blue Monkey</x:String>
+                    <x:String>Squirrel Monkey</x:String>
+                </Picker.Items>
+            </Picker>
 
+            <!--Listenanzeige-->
+            <ListView>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Auswahl1</x:String>
+                        <x:String>Auswahl2</x:String>
+                        <x:String>Auswahl3</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
 
-    </VerticalStackLayout>
+            <!--ItemControl mit Kategorieren-->
+            <TableView Intent="Settings">
+                <TableRoot>
+                    <TableSection Title="Ring">
+                        <SwitchCell Text="New Voice Mail" On="False"/>
+                        <EntryCell Placeholder="Text"/>
+                        <ViewCell>
+                            <Picker/>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <!--Anzeige von Web-Inhalten-->
+            <!--<WebView Source="https://www.google.de" HeightRequest="30"/>-->
+
+            <!--Anzeige von grafischen Ressourcen-->
+            <Image Source="https://aka.ms/campus.jpg" Aspect="AspectFit" HeightRequest="160"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -1,4 +1,6 @@
-﻿namespace Personendatenbank
+﻿using Microsoft.Maui.Handlers;
+
+namespace Personendatenbank
 {
     public partial class App : Application
     {
