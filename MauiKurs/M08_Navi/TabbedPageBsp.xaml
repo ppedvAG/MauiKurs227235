@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- vgl. App.xaml.cs-->
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:MauiKurs"
+             x:Class="MauiKurs.Navi.TabbedPageBsp"
+             Title="TabbedPageBsp">
+
+    <!--TabbedPages bieten eine Registerkarten-Navigation für beinhaltende ContentPages-->
+    <ContentPage Title="Page 1">
+        <Label HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Text="Page 1"/>
+    </ContentPage>
+
+    <local:Controls/>
+    <local:Layouts/>
+    <local:Resources_Styles/>
+
+</TabbedPage>

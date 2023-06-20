@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind, *Converter.cs, Person.cs-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiKurs.Bindings"
+             x:Class="MauiKurs.Bindings.Bindings"
+             Title="Bindings">
+
+    <ContentPage.Resources>
+        <local:DoubleToColorConverter x:Key="double2color"/>
+        <local:DoublesToColorConverter x:Key="doubles2color"/>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout Margin="10">
+        <!--Mittels Bindungen können Properties von UI-Elementen und .NET-Klassen miteinander verknüpft werden.-->
+        <Slider Minimum="0"
+                Maximum="255"
+                x:Name="Sdr_Rot"/>
+        <!--Mittels einer Markup-Extension ({}-Klammern) kann eine Property an eine andere Property gebunden werden. Die Property,
+            welche das Binding-Objekt beinhaltet, gilt als Target-Property. Source beinhaltet das Quell-Objekt und Path die Quell-Eigenschaft-->
+        <!--Mittels StringFormat können agebundene Strings manipuliert werden-->
+        <Label Text="{Binding Source={x:Reference Sdr_Rot}, Path=Value, StringFormat='Rot: {0:0}'}"/>
+        <!--Converter sind Klassen, welche zur Datentypkonvertierung und Wertmanipulation bei Bindungen verwendet werden.
+        Ihnen können zusätzliche Objekte über die ConverterParameter-Eigenschaft übergeben werden-->
+        <Label HeightRequest="100"
+                 WidthRequest="100"
+                 BackgroundColor="{Binding Source={x:Reference Sdr_Rot}, 
+                                           Path=Value, 
+                                           Converter={StaticResource double2color}, 
+                                           ConverterParameter=150,
+                                           Mode=OneWay}"/>
+
+        <Slider Minimum="0"
+                Maximum="255"
+                x:Name="Sdr_Gruen"/>
+        <Label Text="{Binding Source={x:Reference Sdr_Gruen}, Path=Value, StringFormat='Grün: {0:0}'}"/>
+        <Slider Minimum="0"
+                Maximum="255"
+                x:Name="Sdr_Blau"/>
+        <Entry Text="{Binding Source={x:Reference Sdr_Blau}, Path=Value, StringFormat='{0:0}'}"/>
+        <Label HeightRequest="100"
+                 WidthRequest="100">
+            <Label.BackgroundColor>
+                <!--Mit MultiBinding können mehrere Werte zu einem Wert kombiniert werden-->
+                <MultiBinding Converter="{StaticResource doubles2color}">
+                    <Binding Source="{x:Reference Sdr_Rot}"
+                             Path="Value"
+                             Mode="OneWay"/>
+                    <Binding Source="{x:Reference Sdr_Gruen}"
+                             Path="Value"
+                             Mode="OneWay"/>
+                    <Binding Source="{x:Reference Sdr_Blau}"
+                             Path="Value"
+                             Mode="OneWay"/>
+                </MultiBinding>
+            </Label.BackgroundColor>
+        </Label>
+
+        <!--DataBinding-->
+        <StackLayout x:Name="Sly_DataBinding">
+
+            <!--Der BindingContext definiert den Daten-Hintergrund eines Controls/Containers/Page. Kurzbindungen innerhalb dieses
+                Bereichs zielen immer auf dieses Objekt. Hier wurde XAML-seitig ein Person-Objekt definiert-->
+            <StackLayout.BindingContext>
+                <local:Person Name="Anna Nass" Alter="37"/>
+            </StackLayout.BindingContext>
+
+            <!--Bsp für Kurzbindungen an den BindingContext. Codeseitige Veränderungen müssen durch das Interface 
+                INotifyPropertyChanged kommuniziert werden (vgl. Person.cs)-->
+            <Entry Text="{Binding Name}"/>
+            <Label Text="{Binding Alter}"/>
+            <Label Text="{Binding WichtigeDaten[0].Year}"/>
+
+            <Button x:Name="Btn_Show" Text="Zeige Person" Clicked="Btn_Show_Clicked"/>
+            <!--Button zur Codeseitigen Veränderung der Person-Properties-->
+            <Button x:Name="Btn_Altern" Text="Lasse Person altern" Clicked="Btn_Altern_Clicked"/>
+
+            <!--Die Property 'ItemSource' verweist auf die Quelle der Items für die Liste.
+                Hier wurde sie per Kurzbindung an die Property 'WichtigeDaten' des BindingContextes 
+                der Page gebunden (vgl. Person.cs)-->
+            <ListView ItemsSource="{Binding WichtigeDaten}"
+                      x:Name="LstV_Personen">
+                <ListView.ItemTemplate>
+                    <!--Mittels DataTemplates kann das Erscheinen von einzelnen Elementen von ItemControls (hier ListView) defniert werden.
+                        DataTemplates müssen immer ein UI-Element vom Typ Cell beinhalten.-->
+                    <DataTemplate>
+                        <!--Innerhalb von DataTemplates findet immer ein DataBinding an die Elemente der ItemSource statt (vgl. CodeBehind).
+                         Dadurch finden Kurzbindungen an die Properties der Listenelemente statt.-->
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding DayOfWeek}"/>
+                                <Entry Text="{Binding Year}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="Btn_Add" Text="Hinzufügen" Clicked="Btn_Add_Clicked"/>
+            <Button x:Name="Btn_Delete" Text="Löschen" Clicked="Btn_Delete_Clicked"/>
+
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

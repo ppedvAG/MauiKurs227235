@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKurs.Navi.FlyoutBsp.FlyoutPage1"
+             xmlns:pages="clr-namespace:MauiKurs.Navi.FlyoutBsp"
+            xmlns:navi="clr-namespace:MauiKurs.Navi"
+            Title="FlyoutMenu">
+    
+    <!--Diese Page ist die 'Haupt'-Seite der FlyoutPage.-->
+    
+    <FlyoutPage.Flyout>
+        <!--Anmeldung der Menü-Seite-->
+        <pages:FlyoutBsp x:Name="Flyout"/>
+    </FlyoutPage.Flyout>
+    
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <!--Startseite-->
+                <navi:NavPageBsp/>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+    
+</FlyoutPage>

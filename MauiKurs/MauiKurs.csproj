@@ -75,7 +75,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Bindings\Bindings.xaml">
+	  <MauiXaml Update="M07_Bindings\Bindings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="M04_Controls.xaml">
@@ -85,6 +85,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="M06_Resources_Styles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="M08_Navi\NavPageBsp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="M08_Navi\TabbedPageBsp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

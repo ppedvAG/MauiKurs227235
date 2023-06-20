@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MauiKurs.Bindings
 {
+    //vgl. DoubleToColorConverter.cs
     internal class DoublesToColorConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
