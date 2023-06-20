@@ -9,7 +9,7 @@ public partial class App : Application
 		InitializeComponent();
 
         //MainPage beinhaltet die jeweils angezeigte Seite. Zuweisungen hier definieren die Startpage der App.
-        MainPage = new Controls();
+        MainPage = new Layouts();
 	}
 
     //Override der CreateWindow() um Zugriff auf globale shared Lifecycle-Events zu haben (für OS-spezifische LC-Events siehe MauiProgram.cs)
