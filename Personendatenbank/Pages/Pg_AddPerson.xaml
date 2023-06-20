@@ -101,6 +101,7 @@
             <DatePicker x:Name="Dpr_Birthdate"
                         Grid.Row="1"
                         Grid.Column="1"
+                        Format="dd-MM-yyyy"
                         MinimumDate="01.01.1900"
                         DateSelected="Dpr_Birthdate_DateSelected"/>
 

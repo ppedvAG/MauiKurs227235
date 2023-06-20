@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind, App.xaml, Resources/Styles/Colors.xaml-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             x:Class="MauiKurs.Resources_Styles"
+             Title="Resources_Styles">
+
+    <!--Über die Ressourcen von App/Window/Container können für die entsprechende Range Daten
+        zur Verfügung gestellt werden. Die Verbindung von Properties zu diesen Resourcen wird dann
+        über eine StaticResource-Bindung hergestellt. Alternativ kann eine DynamicRessource-Bindung 
+        erstellt werden, wodurch die gebundene Property auf Veränderungen an der Ressource durch 
+        den CodeBehind reagiert.-->
+    <VerticalStackLayout x:Name="Sly_Main">
+        <VerticalStackLayout.Resources>
+
+            <!--Jede Ressource benötigt zur eindeutigen Identifizierung einen x:Key, welcher pro Resource-Eigenschaft
+        einmalig sein muss. Kommt der gleiche Key in mehrfach vor, wird die Resource verwendent, welche
+        näher am Verwender liegt.-->
+            <x:Double x:Key="Dbl_FontSize">25.0</x:Double>
+            <Color x:Key="Primary">#FFE4F6</Color>
+
+            <!--Mit Styles konnen Sammlungen Propertes einzelner Controls und Container
+            gebündelt vordefiniert werden. Erhält ein Style einen Key, erhalten alle derartigen
+            Elemente, welche den Style in ihrer Style-Property angeben, diesen Style. Wenn ein Style
+            keinen Key hat, wird er zum Standartlayout derartiger Elemente in der gewählten
+            Range. Lokale Property-Werte haben Vorang vor den Styles.-->
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="BackgroundColor" Value="LightGreen"/>
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="Sty_Lbl_01">
+                <Setter Property="FontSize" Value="{StaticResource Dbl_FontSize}"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource Gray300}"/>
+            </Style>
+
+            <!--Mittels der BaseOn-Property kann ein Style alles Propeties eines anderen Styles erben.-->
+            <Style TargetType="Label" x:Key="Sty_Lbl_02" BasedOn="{StaticResource Sty_Lbl_01}">
+                <Setter Property="FontFamily" Value="Arial"/>
+            </Style>
+        </VerticalStackLayout.Resources>
+
+        <DatePicker Date="{x:Static sys:DateTime.Now}"/>
+        <!--Eine Anbindung an Ressourcen erfolgt entweder über eine StaticResource-Bindung, welche den Wert einmalig einholt-->
+        <!--oder über eine DynamicResource-Bindung, welche permanent nach Veränderungen sucht und diese übernimmt-->
+        <!--Die x:Static-Bindung ist ebenfalls eine statische Ressourcen-Bindung, welche für Anbindung an 'Nicht-XAML'-Ressourcen.
+        Sie kann zum Beispiel (wie hier) für Bindungen C#-Konstanten verwendet werden-->
+        <!--Dieses Label übernimmt den globalen Style-->
+        <Label Text="HALLO" FontSize="{x:Static sys:Math.PI}"/>
+
+        <Label Text="Moin Moin" FontSize="{StaticResource Dbl_FontSize}"
+               BackgroundColor="{StaticResource Primary}"/>
+
+        <Button Text="Change" x:Name="Btn_Change" 
+                Clicked="Btn_Change_Clicked" BackgroundColor="{DynamicResource Primary}"/>
+
+        <Label Text="HALLO" TextColor="Blue"/>
+        <Label Text="HALLO"/>
+        <!--Dieses Label übernimmt den spezifischen Style-->
+        <Label Text="HALLO" Style="{StaticResource Sty_Lbl_02}"/>
+        <Label Text="HALLO" Style="{StaticResource Sty_Lbl_01}"/>
+
+    </VerticalStackLayout>
+</ContentPage>

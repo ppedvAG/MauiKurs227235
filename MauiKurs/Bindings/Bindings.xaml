@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:bindings="clr-namespace:MauiKurs.Bindings"
+             x:Class="MauiKurs.Bindings.Bindings"
+             Title="Bindings">
+    <ContentPage.Resources>
+        <bindings:DoubleToColorConverter x:Key="double2color"/>
+        <bindings:DoublesToColorConverter x:Key="doubles2color"/>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout>
+        <Slider Minimum="0"
+                Maximum="255"
+                x:Name="Sdr_Wert"/>
+        <Entry Text="{Binding Source={x:Reference Sdr_Wert}, 
+                              Path='Value',
+                              Mode=TwoWay,
+                              StringFormat='{0:0}'}"/>
+        <Label WidthRequest="100"
+               HeightRequest="100"
+               BackgroundColor="{Binding Source={x:Reference Sdr_Wert}, 
+                                         Path=Value,
+                                         Converter={StaticResource double2color}, 
+                                         ConverterParameter=150}"/>
+
+        <Slider Minimum="0"
+                Maximum="255"
+                x:Name="Sdr_Green"/>
+        <Slider Minimum="0"
+                Maximum="255"
+                x:Name="Sdr_Blue"/>
+        <Label WidthRequest="100"
+               HeightRequest="100">
+            <Label.BackgroundColor>
+                <MultiBinding Converter="{StaticResource doubles2color}">
+                    <Binding Source="{x:Reference Sdr_Wert}" Path="Value"/>
+                    <Binding Source="{x:Reference Sdr_Green}" Path="Value"/>
+                    <Binding Source="{x:Reference Sdr_Blue}" Path="Value"/>
+                </MultiBinding>
+            </Label.BackgroundColor>
+        </Label>
+
+
+        <StackLayout x:Name="Stl_DataBinding">
+            <StackLayout.BindingContext>
+                <bindings:Person Name="Hannes"/>
+            </StackLayout.BindingContext>
+
+            <Entry Text="{Binding Name}"/>
+            <Label Text="{Binding Alter}"/>
+            <Label Text="{Binding WichtigeTage[1].DayOfWeek}"/>
+
+            <Button Text="Show" Clicked="Button_Clicked"/>
+            <Button Text="Altern" Clicked="Button_Clicked_1"/>
+
+            <ListView HeightRequest="150"
+                      ItemsSource="{Binding WichtigeTage}"
+                      x:Name="LstV_Tage">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Year}"/>
+                                <Label Text="{Binding DayOfWeek}"/>
+                                <Entry Text="{Binding Day}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+
+            <Button Text="Löschen" Clicked="Button_Clicked_2"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

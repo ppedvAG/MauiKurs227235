@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Personendatenbank"
              x:Class="Personendatenbank.App">
     <Application.Resources>
-        
+        <ResourceDictionary Source="Resources/Styles/GlobalResources.xaml" />
     </Application.Resources>
 </Application>

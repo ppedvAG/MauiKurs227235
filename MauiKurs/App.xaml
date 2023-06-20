@@ -4,9 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiKurs"
              x:Class="MauiKurs.App">
+    <!--Applikationsweite (globale) Ressourcen-->
     <Application.Resources>
+        <!--Die Einbindung von mehreren ResourceDictionaries erfolgt über die Property MergedDictionaries-->
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!--ResourceDictionaries sind XAML-Dateien, welche nur Ressourcen beinhalten-->
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
