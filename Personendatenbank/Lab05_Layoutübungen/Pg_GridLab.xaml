@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Personendatenbank.Lab05_Layoutübungen.Pg_GridLab"
+             BackgroundColor="DarkSlateGray"
+             Title="GridUebung">
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="30"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid Padding="40"
+          RowSpacing="10"
+          ColumnSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="1234"
+                   Grid.ColumnSpan="3"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="50"
+                   TextColor="White"/>
+
+            <Button Text="1"
+                    Grid.Row="1"
+                    Grid.Column="0"/>
+            <Button Text="2"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+            <Button Text="3"
+                    Grid.Row="1"
+                    Grid.Column="2"/>
+
+            <Button Text="4"
+                    Grid.Row="2"
+                    Grid.Column="0"/>
+            <Button Text="5"
+                    Grid.Row="2"
+                    Grid.Column="1"/>
+            <Button Text="6"
+                    Grid.Row="2"
+                    Grid.Column="2"/>
+
+            <Button Text="7"
+                    Grid.Row="3"
+                    Grid.Column="0"/>
+            <Button Text="8"
+                    Grid.Row="3"
+                    Grid.Column="1"/>
+            <Button Text="9"
+                    Grid.Row="3"
+                    Grid.Column="2"/>
+
+            <Button Text="0"
+                    Grid.Row="4"
+                    Grid.Column="1"/>
+
+            <Button Text="Dial"
+                    Grid.Row="5"
+                    Grid.ColumnSpan="3"
+                    BackgroundColor="Olive"
+                    TextTransform="None"/>
+
+        </Grid>
+</ContentPage>

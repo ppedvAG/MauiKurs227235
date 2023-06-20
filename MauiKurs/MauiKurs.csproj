@@ -60,16 +60,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Xaml_Grundlagen.xaml.cs">
-	    <DependentUpon>Xaml_Grundlagen.xaml</DependentUpon>
+	  <Compile Update="M04_Controls.xaml.cs">
+	    <DependentUpon>M04_Controls.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="M05_Layouts.xaml.cs">
+	    <DependentUpon>M05_Layouts.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="M03_Xaml_Grundlagen.xaml.cs">
+	    <DependentUpon>M03_Xaml_Grundlagen.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Controls.xaml">
+	  <MauiXaml Update="M04_Controls.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Layouts.xaml">
+	  <MauiXaml Update="M05_Layouts.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources_Styles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
