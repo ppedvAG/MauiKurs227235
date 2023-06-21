@@ -19,7 +19,9 @@ public partial class App : Application
         //MainPage = new Navi.TabbedPageBsp();
 
         //Alternative Navigation per Flyout-Page (vgl. Navi\FlyoutBsp\*)
-        MainPage = new Navi.FlyoutBsp.FlyoutPage1();
+        //MainPage = new Navi.FlyoutBsp.FlyoutPage1();
+
+        MainPage = new Navi.AppShell();
     }
 
     //Override der CreateWindow() um Zugriff auf globale shared Lifecycle-Events zu haben (für OS-spezifische LC-Events siehe MauiProgram.cs)
