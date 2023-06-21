@@ -54,11 +54,15 @@
         <ShellContent Route="plattform"
                       ContentTemplate="{DataTemplate osspez:Plattformspez}"/>
     </FlyoutItem>
-    <FlyoutItem Title="MVVM">
+    <FlyoutItem Title="M10_MVVM">
         <ShellContent Route="mvvm"
                       ContentTemplate="{DataTemplate mvvm:BeispielView}"/>
     </FlyoutItem>
-    
+    <FlyoutItem Title="M11_Gestures">
+        <ShellContent Route="gestures"
+                      ContentTemplate="{DataTemplate local:Gestures}"/>
+    </FlyoutItem>
+
     <MenuItem Text="Hilfe"/>
 
 

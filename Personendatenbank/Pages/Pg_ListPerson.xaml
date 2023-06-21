@@ -3,24 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Personendatenbank.Model"
              xmlns:conv="clr-namespace:Personendatenbank.Converter"
+             xmlns:vm="clr-namespace:Personendatenbank.ViewModel"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Personendatenbank.Pages.Pg_ListPerson"
              Title="Personenübersicht">
     <ContentPage.Resources>
         <conv:BoolToVerheiratetStringConverter x:Key="bool2string"/>
     </ContentPage.Resources>
 
+    <ContentPage.BindingContext>
+        <vm:ListViewModel/>
+    </ContentPage.BindingContext>
+
     <StackLayout Padding="10"
                  Spacing="10">
         <ListView VerticalOptions="StartAndExpand"
                   x:Name="LstV_Personen"
-                  RowHeight="100">
+                  RowHeight="100"
+                  ItemsSource="{Binding PersonList}">
 
-            <ListView.ItemsSource>
+            <!--<ListView.ItemsSource>
                 <x:Array Type="{x:Type model:Person}">
                     <model:Person Name="Anna Nass" IsMarried="True"/>
                     <model:Person Name="Rainer Zufall" IsMarried="False"/>
                 </x:Array>
-            </ListView.ItemsSource>
+            </ListView.ItemsSource>-->
+
+            <ListView.Behaviors>
+                <tk:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ItemSelectedCmd}"/>
+            </ListView.Behaviors>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -45,6 +56,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <Button Text="Person löschen"
-                x:Name="Btn_Loeschen"/>
+                x:Name="Btn_Loeschen"
+                Command="{Binding DeleteCmd}"
+                CommandParameter="{Binding Source={x:Reference LstV_Personen}}"/>
     </StackLayout>
 </ContentPage>

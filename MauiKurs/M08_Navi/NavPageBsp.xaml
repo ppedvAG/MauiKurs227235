@@ -5,7 +5,10 @@
              x:Class="MauiKurs.Navi.NavPageBsp"
              Title="NavPageBsp">
     <VerticalStackLayout Margin="10">
-        <Button Text="Goto Binding" Clicked="Button_Clicked"/>
-        <Button Text="Goto Layouts" Clicked="Button_Clicked_1"/>
+        <Button Text="Goto Binding" Clicked="Btn_Main_Clicked"/>
+        <Button Text="Goto Layouts" Clicked="Btn_Controls_Clicked"/>
+
+        <!--M11: Bsp für MessageCenter-Verwendung, vgl. CodeBehind und M11_McSubscriberPage.xaml-->
+        <Button Text="Start Message" Clicked="Button_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

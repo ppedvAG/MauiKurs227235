@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKurs.Gestures"
+             Title="Gestures">
+
+    <!--Gesten können über entsprechende Gesture-Objekte definiert werden-->
+    <StackLayout>
+        <Label Text="DOUBLE-TAP ME, SWIPE ME"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+               x:Name="Lbl_Main"
+               Margin="10">
+            <Label.GestureRecognizers>
+                <!--Tap-Geste-->
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                      NumberOfTapsRequired="2"/>
+                <!--Swipe-Geste-->
+                <SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label Margin="0, 30"/>
+
+        <Frame BorderColor="Black">
+            <Image Source="ppedv.bmp" Aspect="Center">
+                <Image.GestureRecognizers>
+                    <!--Pan-Geste-->
+                    <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"/>
+
+                    <!--Pinch-Geste-->
+                    <PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+
+        <Label Margin="0, 30"/>
+
+        <!--Drag'n'Drop benötigt zwei verschiedene Objekte-->
+        <Label BackgroundColor="Red" Text="DragMeToBlueBox" FontSize="20" WidthRequest="300" HorizontalOptions="Center" HorizontalTextAlignment="Center" HeightRequest="100" VerticalTextAlignment="Center" TextColor="White">
+            <Label.GestureRecognizers>
+                <!--Drag definierte Objekte, welche bewegt werden können-->
+                <DragGestureRecognizer DragStarting="DragGestureRecognizer_DragStarting"/>
+            </Label.GestureRecognizers>
+        </Label>
+        <Label BackgroundColor="Blue" FontSize="20" WidthRequest="300" HorizontalOptions="Center" HorizontalTextAlignment="Center" HeightRequest="100" VerticalTextAlignment="Center" TextColor="White">
+            <Label.GestureRecognizers>
+                <!--Drop definiert Objekte, wo bewegte Objekte abgelegt werden können-->
+                <DropGestureRecognizer Drop="DropGestureRecognizer_Drop"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+    </StackLayout>
+</ContentPage>

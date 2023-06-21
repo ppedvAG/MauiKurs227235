@@ -23,6 +23,8 @@ public partial class App : Application
 
         //AppShell beinhaltet die Shell-Navigation dieser App (vgl. Navi.AppShell.cs)
         MainPage = new Navi.AppShell();
+
+        //MainPage = new Gestures();
     }
 
     //Override der CreateWindow() um Zugriff auf globale shared Lifecycle-Events zu haben (für OS-spezifische LC-Events siehe MauiProgram.cs)

@@ -61,6 +61,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="M11_Loc\Strings.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Strings.resx</DependentUpon>
+	  </Compile>
 	  <Compile Update="M04_Controls.xaml.cs">
 	    <DependentUpon>M04_Controls.xaml</DependentUpon>
 	  </Compile>
@@ -79,6 +84,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="M11_Loc\Strings.en-US.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="M11_Loc\Strings.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Gestures.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="M07_Bindings\Bindings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -109,7 +127,10 @@
 	  <MauiXaml Update="M09_Plattformspezifika\Plattformspez.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MVVM\View\BeispielView.xaml">
+	  <MauiXaml Update="M10_MVVM\View\BeispielView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="M11_McSubscriberPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
