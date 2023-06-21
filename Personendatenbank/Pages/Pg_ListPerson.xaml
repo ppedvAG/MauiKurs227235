@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Personendatenbank.Model"
+             xmlns:conv="clr-namespace:Personendatenbank.Converter"
+             x:Class="Personendatenbank.Pages.Pg_ListPerson"
+             Title="Personenübersicht">
+    <ContentPage.Resources>
+        <conv:BoolToVerheiratetStringConverter x:Key="bool2string"/>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="10"
+                 Spacing="10">
+        <ListView VerticalOptions="StartAndExpand"
+                  x:Name="LstV_Personen"
+                  RowHeight="100">
+
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type model:Person}">
+                    <model:Person Name="Anna Nass" IsMarried="True"/>
+                    <model:Person Name="Rainer Zufall" IsMarried="False"/>
+                </x:Array>
+            </ListView.ItemsSource>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <StackLayout.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Margin" Value="5,0"/>
+                                </Style>
+                            </StackLayout.Resources>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Gender, StringFormat='({0})'}"/>
+                            </StackLayout>
+                            <Label Text="{Binding Birthdate, StringFormat='Geboren am {0:dd.MM.yyyy}'}"/>
+                            <Label Text="{Binding IsMarried, Converter={StaticResource bool2string}}"/>
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Person löschen"
+                x:Name="Btn_Loeschen"/>
+    </StackLayout>
+</ContentPage>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiKurs.Navi.RoutingBsp"
              Title="RoutingBsp">
-    <VerticalStackLayout>
-        <Button Text="GoTo Layouts"
-                Clicked="Button_Clicked"/>
-        <Entry x:Name="Ent_Input"/>
-        <Button Text="GoTo Target"
-                Clicked="Button_Clicked_1"/>
-    </VerticalStackLayout>
+    <StackLayout>
+        <Button Text="Route To Layout" Clicked="Button_Clicked"/>
+        <Entry x:Name="Ety_ItemToSend" Placeholder="String to send"/>
+        <Button Text="Send String via Route" Clicked="Button_Clicked_1"/>
+    </StackLayout>
 </ContentPage>

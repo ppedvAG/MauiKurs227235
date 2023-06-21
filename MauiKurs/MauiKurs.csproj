@@ -72,6 +72,9 @@
 	  <Compile Update="M06_Resources_Styles.xaml.cs">
 	    <DependentUpon>M06_Resources_Styles.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Platforms\Windows\Services\DeviceOrientationService.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,6 +103,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="M08_Navi\TabbedPageBsp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Plattformspezifika\Plattformspez.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
