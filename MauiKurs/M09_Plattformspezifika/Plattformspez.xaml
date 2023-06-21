@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind, DeviceOrientationService.cs, Plattforms\Android\Services\DeviceOrientationService.cs, Plattforms\Windows\Services\DeviceOrientationService.cs-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiKurs.Plattformspezifika.Plattformspez"
+             Title="Plattformspezifika">
+    <VerticalStackLayout>
+        <!--Mittels OnPlattform und OnIdeom können XAML-seitig unterschiedliche Eigenschaftbelegungen für 
+        Betriebsysteme und Gerätetypen erstellen-->
+        <Label Text="{OnPlatform Default=DEFAULT, Android=ANDROID, WinUI=WINUI}"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               BackgroundColor="{OnIdiom Default=HotPink, Desktop=Blue, Phone=Green}"/>
+
+        <Label x:Name="Lbl_DeviceInfo"/>
+
+        <Label x:Name="Lbl_Complilerbefehle"/>
+
+        <Label x:Name="Lbl_Orientation"/>
+
+        <Button Text="Flashlight" Clicked="Button_Clicked"/>
+
+        <Label x:Name="Lbl_Pref"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace MauiKurs.Plattformspezifika
 {
+    //Partielle gemeinsame Klassendefinition
+    //Implementierung findet Plattformspezifisch in den jeweiligen Plattform-Ordnern statt
     public partial class DeviceOrientationService
     {
         public partial DeviceOrientation GetOrientation();
+    }
 
-        public enum DeviceOrientation
-        {
-            Undifined,
-            Landscape,
-            Portrait
-        }
+    public enum DeviceOrientation
+    {
+        Undefined,
+        Landscape,
+        Portrait
     }
 }

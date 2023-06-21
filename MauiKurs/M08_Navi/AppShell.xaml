@@ -6,6 +6,8 @@
        xmlns:bindings="clr-namespace:MauiKurs.Bindings"
        xmlns:navi="clr-namespace:MauiKurs.Navi"
        xmlns:flyout="clr-namespace:MauiKurs.Navi.FlyoutBsp"
+       xmlns:osspez="clr-namespace:MauiKurs.Plattformspezifika"
+       xmlns:mvvm="clr-namespace:MauiKurs.MVVM.View"
              x:Class="MauiKurs.Navi.AppShell"
              Title="MAUI">
     <!--Die Shell bietet eine Routing-Navigation für alle angemeldeten Seiten (vgl. RoutingBsp.xaml)-->
@@ -48,7 +50,15 @@
                       Route="flyoutpage"
                       ContentTemplate="{DataTemplate flyout:FlyoutPage1}"/>
     </FlyoutItem>
-
+    <FlyoutItem Title="M09_Plattformspezifika">
+        <ShellContent Route="plattform"
+                      ContentTemplate="{DataTemplate osspez:Plattformspez}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="MVVM">
+        <ShellContent Route="mvvm"
+                      ContentTemplate="{DataTemplate mvvm:BeispielView}"/>
+    </FlyoutItem>
+    
     <MenuItem Text="Hilfe"/>
 
 

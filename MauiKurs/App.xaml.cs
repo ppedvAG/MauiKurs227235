@@ -22,9 +22,7 @@ public partial class App : Application
         //MainPage = new Navi.FlyoutBsp.FlyoutPage1();
 
         //AppShell beinhaltet die Shell-Navigation dieser App (vgl. Navi.AppShell.cs)
-        //MainPage = new Navi.AppShell();
-
-        MainPage = new Plattformspezifika.Plattformspez();
+        MainPage = new Navi.AppShell();
     }
 
     //Override der CreateWindow() um Zugriff auf globale shared Lifecycle-Events zu haben (für OS-spezifische LC-Events siehe MauiProgram.cs)
@@ -33,7 +31,7 @@ public partial class App : Application
         Window window = base.CreateWindow(activationState);
 
         window.Created += (s, e) => Debug.Print("SharedCreated");
-        window.Stopped += (s, e) => { Debug.Print("OnStop"); Preferences.Set("Stop", "CIAO"); };
+        window.Stopped += (s, e) => { Debug.Print("OnStop"); Preferences.Set("OnStop", "CIAO"); };
 
         return window;
     }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiKurs.MVVM.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiKurs.MVVM.View.BeispielView"
+             Title="BeispielView">
+    <ContentPage.BindingContext>
+        <vm:BeispielViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+
+        <Entry Text="{Binding NeuerHersteller}" Placeholder="Hersteller"/>
+        <Entry Text="{Binding NeueMaxG}" Placeholder="MaxGeschwindigkeit"/>
+        <DatePicker Date="{Binding NeuesBaujahr}"/>
+
+        <Button Text="Hinzufügen"
+                Command="{Binding HinzufügenCmd}"/>
+
+        <ListView x:Name="LstV_Pkw"
+                  ItemsSource="{Binding PkwListe}">
+
+            <ListView.Behaviors>
+                <toolkit:EventToCommandBehavior
+                    EventName="ItemSelected"
+                    Command="{Binding ItemSelectedCmd}"/>
+            </ListView.Behaviors>
+            
+        </ListView>
+
+        <Button Text="Löschen"
+                Command="{Binding LöschenCmd}"
+                CommandParameter="{Binding Source={x:Reference LstV_Pkw}}"/>
+
+    </VerticalStackLayout>
+</ContentPage>
